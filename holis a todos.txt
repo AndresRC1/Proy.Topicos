@@ -1,2 +1,12 @@
 holis Sam y hansel
 nariz de bolis 
+
+
+
+git add . -> Preparar repositorio para agregar archivos
+
+git commit -m "mensaje" -> Avisar de un cambio o actualización
+
+git push -> Actualizar el repositorio de github
+
+git pull -> Actualizar repositorio local 
