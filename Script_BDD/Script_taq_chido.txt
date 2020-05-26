@@ -1,0 +1,57 @@
+create database taqueria;
+
+use taqueria;
+
+Create table empleado(
+id_empleado int primary key,
+nombre-empleado varchar(50),
+telefono varchar(50),
+direccion varchar(50),
+usuario varchar(50),
+password varchar(32));
+
+Create table categoria_producto(
+id_categoria int primary key,
+categoria varchar (50));
+
+Create table proveedor(
+id_proveedor int primary key,
+nombre_proveedor varchar(50),
+teléfono varchar(40),
+dirección varchar(50));
+
+Create table producto(
+id_producto int primary key,
+nombre_producto varchar(50),
+descripcion varchar(50),
+cantidad varchar(50),
+costo numeric(9,2),
+id_proveedor int,
+id_categoria int,
+constraint productoPK primary key (id_producto),
+constraint productoFK1 foreign key references proveedor(id_proveedor),
+constraint productoFK2 foreign key references categoria_producto(id_categoria));
+
+Create table orden(
+id_orden int not null,
+nota varchar (150),
+constraint ordenPK primary key (id_orden));
+
+create table compra_detalle(
+id_compra int not null,
+id_orden int not null,
+id_producto int not null,
+cantidad int not null,
+precio_unitario int not null,
+constraint compra_detallePk primary key (id_compra, id_orden),
+constraint compra_detalleFk1 foreign key (id_compra) references compra(id_compra),
+constraint compra_detalleFk2 foreign key (id_orden) references orden(id_orden),
+constraint compra_detalleFk3 foreign key (id_producto) references producto(id_producto)
+);
+
+Create table compra(
+id_compra int not null,
+fecha date,
+id_empleado int,
+constraint compraPK primary key (id_compra),
+constraint compraFk1 foreign key (id_empleado) references empleado(id_empleado));
