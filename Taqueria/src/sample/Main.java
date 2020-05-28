@@ -1,0 +1,37 @@
+package sample;
+
+import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import sample.ModelosDAO.Conexion;
+import sample.Vistas.Login;
+
+public class Main extends Application implements EventHandler {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        //primaryStage.show();
+        Login login = new Login();
+        login.show();
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void handle(Event event) {
+        Conexion.Connect();
+        if (Conexion.getConnection() != null){
+            System.out.println("Conexión exitosa!");
+        }
+    }
+}
