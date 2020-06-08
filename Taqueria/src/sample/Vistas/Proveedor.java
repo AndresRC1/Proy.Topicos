@@ -42,7 +42,7 @@ public class Proveedor extends Stage {
         btnGuardar = new Button("Guardar");
         btnGuardar.setOnAction(event -> GuardarProveedor());
 
-        vBox.getChildren().addAll(labelNombre,txtNombre,txtTel,txtDir);
+        vBox.getChildren().addAll(labelNombre,txtNombre,txtTel,txtDir,btnGuardar);
         scene = new Scene(vBox, 250, 300);
     }
 

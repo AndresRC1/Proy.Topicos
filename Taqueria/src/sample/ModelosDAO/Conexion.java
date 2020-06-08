@@ -1,7 +1,6 @@
 package sample.ModelosDAO;
 
 import java.sql.Connection;
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -12,11 +11,11 @@ public class Conexion {
 
     private static String host = "localhost";
     private static String db = "taqueria";
-    private static String user = "topicos20";
-    private static String pass = "1234";
+    private static String user = "root";
+    private static String pass = "RACA971201";
     public static Connection conn = null;
 
-    public static void Connect(){
+    public Connection Connect(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://"+ host +":3306/" + db, user, pass);
@@ -26,12 +25,13 @@ public class Conexion {
         }catch (SQLException ex){
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public static Connection getConnection(){
-        if (conn == null) Connect();
         return conn;
     }
+
+    /*public static Connection getConnection(){
+        if (conn == null) Connect();
+        return conn;
+    }*/
 
     public static void Disconnect() {
         try {

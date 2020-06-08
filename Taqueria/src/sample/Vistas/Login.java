@@ -2,6 +2,7 @@ package sample.Vistas;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -19,11 +20,11 @@ public class Login extends Stage implements EventHandler {
 
     public Login(){
         crearGUI();
-        scene = new Scene(vBox, 500, 300);
+        scene = new Scene(vBox, 350, 250);
         setScene(scene);
         setTitle("Login");
         this.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, this);
-        scene.getStylesheets().add("sample/Estilos/Bootstrap3.css");
+        //scene.getStylesheets().add("sample/Estilos/Bootstrap3.css");
         show();
     }
 
@@ -39,7 +40,7 @@ public class Login extends Stage implements EventHandler {
         txtUser.setPromptText("Usuario");
 
         txtPass = new PasswordField();
-        txtPass.setStyle("-fx-translate-y: 20");
+        txtPass.setStyle("-fx-translate-y: 10");
         txtPass.setStyle("-fx-background-radius: 5");
         txtPass.setLayoutX(50);
         txtPass.setPromptText("Contraseña");

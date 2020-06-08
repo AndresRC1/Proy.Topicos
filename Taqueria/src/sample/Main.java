@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import sample.ModelosDAO.Conexion;
 import sample.Vistas.Login;
 
-public class Main extends Application implements EventHandler {
+public class Main extends Application  {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,11 +27,5 @@ public class Main extends Application implements EventHandler {
         launch(args);
     }
 
-    @Override
-    public void handle(Event event) {
-        Conexion.Connect();
-        if (Conexion.getConnection() != null){
-            System.out.println("Conexión exitosa!");
-        }
-    }
+
 }

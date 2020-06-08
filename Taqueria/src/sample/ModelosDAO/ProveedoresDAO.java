@@ -52,7 +52,7 @@ public class ProveedoresDAO {
                 "VALUES ('"+nombre_proveedor+"', '"+telefono+"', '"+direccion+"')";
         try {
             Statement st = Conexion.conn.createStatement();
-            st.executeQuery(query);
+            st.executeUpdate(query);
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -92,7 +92,7 @@ public class ProveedoresDAO {
         ObservableList<ProveedoresDAO> list = FXCollections.observableArrayList();
         ProveedoresDAO provDAO = null;
 
-        String query = "SELECT * FROM proveedor ORDERY BY nombre_proveedor ASC";
+        String query = "SELECT * FROM proveedor ";
 
         try {
             Statement st = Conexion.conn.createStatement();

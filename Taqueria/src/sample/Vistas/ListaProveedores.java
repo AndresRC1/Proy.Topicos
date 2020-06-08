@@ -10,7 +10,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import sample.Componentes.CellButton;
+import sample.ModelosDAO.Conexion;
 import sample.ModelosDAO.ProveedoresDAO;
+
+import java.sql.Connection;
 
 public class ListaProveedores extends Stage {
 
@@ -44,13 +47,13 @@ public class ListaProveedores extends Stage {
         TableColumn<ProveedoresDAO, Integer> ColumnIdProveedor = new TableColumn<>("Id Proveedor");
         ColumnIdProveedor.setCellValueFactory(new PropertyValueFactory<>("id_proveedor"));
 
-        TableColumn<ProveedoresDAO, Integer> ColumnNomProveedor = new TableColumn<>("Nombre Proveedor");
+        TableColumn<ProveedoresDAO, String> ColumnNomProveedor = new TableColumn<>("Nombre Proveedor");
         ColumnNomProveedor.setCellValueFactory(new PropertyValueFactory<>("nombre_proveedor"));
 
-        TableColumn<ProveedoresDAO, Integer> ColumnTel = new TableColumn<>("Telefono");
+        TableColumn<ProveedoresDAO, String> ColumnTel = new TableColumn<>("Telefono");
         ColumnTel.setCellValueFactory(new PropertyValueFactory<>("telefono"));
 
-        TableColumn<ProveedoresDAO, Integer> ColumnDireccion  = new TableColumn<>("Direccion");
+        TableColumn<ProveedoresDAO, String> ColumnDireccion  = new TableColumn<>("Direccion");
         ColumnDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
 
         TableColumn<ProveedoresDAO, String> tbcEditar = new TableColumn<>("Editar");
@@ -73,4 +76,8 @@ public class ListaProveedores extends Stage {
         TVProveedores.setItems(new ProveedoresDAO().SELECT());
 
     }
+
+    Conexion cc = new Conexion();
+    Connection con = cc.Connect();
+
 }
