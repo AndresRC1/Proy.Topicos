@@ -60,11 +60,11 @@ public class ProveedoresDAO {
 
     public void UPDATE(){
 
-        String query = "UPDATE proveedor SET" +
+        String query = "UPDATE proveedor SET " +
                 "nombre_proveedor = '" + nombre_proveedor + "', " +
                 "telefono = '" + telefono+ "'," +
                 "direccion ='" + direccion+ "'" +
-                "WHERE id_proveedor = '" + id_proveedor+ "'";
+                "WHERE id_proveedor = " + id_proveedor;
         System.out.println(query);
         try {
             Statement st = Conexion.conn.createStatement();
