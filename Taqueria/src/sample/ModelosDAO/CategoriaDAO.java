@@ -80,4 +80,26 @@ public class CategoriaDAO {
         }
         return list;
     }
+
+    public ObservableList<CategoriaDAO> COMOBOCAT(){
+
+        ObservableList<CategoriaDAO> list = FXCollections.observableArrayList();
+        CategoriaDAO catDAO = null;
+
+        String query = "select cp.categoria from categoria_producto as cp; ";
+
+        try {
+            Statement st = Conexion.conn.createStatement();
+            ResultSet res = st.executeQuery(query);
+
+            while (res.next()){
+                catDAO = new CategoriaDAO();
+                catDAO.categoria = res.getString("categoria");
+                list.add(catDAO);
+            }
+        } catch (Exception e){
+
+        }
+        return list;
+    }
 }

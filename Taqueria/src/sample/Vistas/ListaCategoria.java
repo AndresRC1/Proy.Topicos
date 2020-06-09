@@ -37,7 +37,7 @@ public class ListaCategoria extends Stage {
         btn = new Button("Agregar");
         btn.setOnAction(event -> AgregarCategoria());
         vBox.getChildren().addAll(TVCategoria,btn);
-        scene = new Scene(vBox, 750, 280);
+        scene = new Scene(vBox, 500, 280);
     }
 
 private void AgregarCategoria(){ new Categoria(TVCategoria); }
