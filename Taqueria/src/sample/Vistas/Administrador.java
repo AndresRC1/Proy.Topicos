@@ -16,14 +16,14 @@ public class Administrador extends Stage {
 
     public Scene escena;
     private MenuBar menuBar;
-    private Menu menuProveedores, menuCategorias,menuProducto, menuOrden;
-    private MenuItem ItemProveedor, ItemProducto, ItemCategoria;
+    private Menu menuProveedores, menuCategorias,menuProducto,menuEmpleado, menuOrden;
+    private MenuItem ItemProveedor, ItemProducto, ItemCategoria, ItemEmpleado;
     private BorderPane panel;
 
     public Administrador(){
         panel = new BorderPane();
         CreatGUI();
-        escena = new Scene(panel, 400,330);
+        escena = new Scene(panel, 750,330);
         setScene(escena);
         //escena.getStylesheets().add("sample/Estilos/estilos_principal.css");
         setTitle("CRUD Administrador");
@@ -45,6 +45,9 @@ public class Administrador extends Stage {
         menuProducto = new  Menu("Lista de Productos");
         menuProducto.setId("menu3");
 
+        menuEmpleado = new Menu("Lisata de Empleados");
+        menuEmpleado.setId("menu4");
+
         ItemProveedor = new MenuItem("Proveedores");
         ItemProveedor.setOnAction(event -> EventoItem(1));
 
@@ -54,10 +57,14 @@ public class Administrador extends Stage {
         ItemProducto = new MenuItem("Producto");
         ItemProducto.setOnAction(event -> EventoItem(3));
 
-        menuBar.getMenus().addAll(menuProveedores, menuCategorias, menuProducto);
+        ItemEmpleado = new MenuItem("Empleado");
+        ItemEmpleado.setOnAction(event -> EventoItem(4));
+
+        menuBar.getMenus().addAll(menuProveedores, menuCategorias, menuProducto, menuEmpleado);
         menuProveedores.getItems().addAll(ItemProveedor );
         menuCategorias.getItems().addAll(ItemCategoria);
         menuProducto.getItems().addAll(ItemProducto);
+        menuEmpleado.getItems().addAll(ItemEmpleado);
         panel.setTop(menuBar);
 
     }
@@ -67,6 +74,7 @@ public class Administrador extends Stage {
             case 1: new ListaProveedores(); break;
             case 2: new ListaCategoria(); break;
             case 3: new ListaProducto(); break;
+            case 4: new ListaEmpleado(); break;
         }
     }
 
