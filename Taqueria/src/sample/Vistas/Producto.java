@@ -18,7 +18,7 @@ public class Producto extends Stage {
     private Scene scene;
     private VBox vBox;
     private Label labelNombre;
-    private TextField txtNombre, txtDescripcion, txtCantidad, txtCosto;
+    private TextField txtNombre, txtDescripcion, txtCantidad, txtCosto, txtProveedor, txtCategoria;
     private ComboBox comboCategoria;
     private ComboBox comboProveedor;
     private Button btnGuardar;
@@ -35,6 +35,7 @@ public class Producto extends Stage {
     private void CrearGUI(){
         vBox = new VBox();
         labelNombre = new Label("Nombre");
+
         txtNombre = new TextField();
         txtNombre.setPromptText("Introduce el nombre del producto");
 
@@ -47,13 +48,19 @@ public class Producto extends Stage {
         txtCosto = new TextField();
         txtCosto.setPromptText("Introduce el costo");
 
-        comboCategoria = new ComboBox();
-        comboCategoria.setItems(objCatDAO.COMOBOCAT());
+        txtProveedor = new TextField();
+        txtProveedor.setPromptText("Introduce el Id del Proveedor");
+
+        txtCategoria= new TextField();
+        txtCategoria.setPromptText("Inroduce el Id de la Categoria");
+
+        //comboCategoria = new ComboBox();
+        //comboCategoria.setItems();
 
         btnGuardar = new Button("Guardar");
         btnGuardar.setOnAction(event -> GuardarProducto());
 
-        vBox.getChildren().addAll(labelNombre,txtNombre,txtDescripcion,txtCantidad,txtCosto, comboCategoria, comboProveedor,btnGuardar);
+        vBox.getChildren().addAll(labelNombre,txtNombre,txtDescripcion,txtCantidad,txtCosto,txtProveedor,txtCategoria,btnGuardar);
         scene = new Scene(vBox, 300,300);
     }
     private void GuardarProducto(){
@@ -61,6 +68,8 @@ public class Producto extends Stage {
         String des = txtDescripcion.getText();
         Integer can = Integer.valueOf(txtCantidad.getText());
         Double cos = Double.valueOf(txtCosto.getText());
+        Integer prov = Integer.valueOf(txtProveedor.getText());
+        Integer cat = Integer.valueOf(txtCategoria.getText());
 
         if (objPrDAO == null){
             objPrDAO = new ProductoDAO();
@@ -68,12 +77,16 @@ public class Producto extends Stage {
             objPrDAO.setDescripcion(des);
             objPrDAO.setCantidad(can);
             objPrDAO.setCosto(cos);
+            objPrDAO.setId_proveedor(prov);
+            objPrDAO.setId_categoria(cat);
             objPrDAO.INSERT();
         } else {
             objPrDAO.setNombre_producto(nombre);
             objPrDAO.setDescripcion(des);
             objPrDAO.setCantidad(can);
             objPrDAO.setCosto(cos);
+            objPrDAO.setId_proveedor(prov);
+            objPrDAO.setId_categoria(cat);
             objPrDAO.UPDATE();
         }
 
@@ -87,6 +100,8 @@ public class Producto extends Stage {
         txtDescripcion.setText(productoDAO.getDescripcion());
         txtCantidad.setText(String.valueOf(productoDAO.getCantidad()));
         txtCosto.setText(String.valueOf(productoDAO.getCosto()));
+        txtProveedor.setText(String.valueOf(productoDAO.getId_proveedor()));
+        txtCategoria.setText(String.valueOf(productoDAO.getId_categoria()));
     }
 
 

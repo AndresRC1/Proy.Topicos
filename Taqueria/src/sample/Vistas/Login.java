@@ -8,6 +8,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.ModelosDAO.Conexion;
+
+import java.sql.Connection;
 
 public class Login extends Stage implements EventHandler {
 
@@ -81,4 +84,8 @@ public class Login extends Stage implements EventHandler {
     public void handle(Event event) {
 
     }
+
+    Conexion cc = new Conexion();
+    Connection con = cc.Connect();
 }
+

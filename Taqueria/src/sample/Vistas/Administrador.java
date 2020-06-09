@@ -8,6 +8,9 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sample.ModelosDAO.Conexion;
+
+import java.sql.Connection;
 
 public class Administrador extends Stage {
 
@@ -22,9 +25,10 @@ public class Administrador extends Stage {
         CreatGUI();
         escena = new Scene(panel, 400,330);
         setScene(escena);
+        //escena.getStylesheets().add("sample/Estilos/estilos_principal.css");
         setTitle("CRUD Administrador");
         //setMaximized(true);
-        //escena.getStylesheets().add(getClass().getResource("sample/Estilos/Bootstrap3.css").toExternalForm());
+        //escena.getStylesheets().add(getClass().getResource("../Estilos/estilos_principal.css").toExternalForm());
         show();
 
     }
@@ -56,7 +60,6 @@ public class Administrador extends Stage {
         menuProducto.getItems().addAll(ItemProducto);
         panel.setTop(menuBar);
 
-
     }
 
     private void EventoItem(int opc){
@@ -69,6 +72,9 @@ public class Administrador extends Stage {
 
 
     public void getScena(Scene scene){
-
     }
+
+    Conexion cc = new Conexion();
+    Connection con = cc.Connect();
+
 }

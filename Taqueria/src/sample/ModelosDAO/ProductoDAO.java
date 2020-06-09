@@ -46,8 +46,8 @@ public class ProductoDAO {
     public void setId_categoria(int id_categoria) { this.id_categoria = id_categoria; }
 
     public void INSERT(){
-        String query = "INSERT INTO proveedor (nombre_producto, descripcion, cantidad, costo)" +
-                "VALUES ('"+nombre_producto+"', '"+descripcion+"', "+cantidad+",  "+costo+", '"+id_proveedor+"', '"+id_categoria+"')";
+        String query = "INSERT INTO producto (nombre_producto, descripcion, cantidad, costo, id_proveedor, id_categoria)" +
+                "VALUES ('"+nombre_producto+"', '"+descripcion+"', "+cantidad+",  "+costo+", "+id_proveedor+", "+id_categoria+")";
         try {
             Statement st = Conexion.conn.createStatement();
             st.executeUpdate(query);
@@ -61,11 +61,11 @@ public class ProductoDAO {
         String query = "UPDATE producto SET " +
                 "nombre_producto = '" + nombre_producto + "', " +
                 "descripcion = '" + descripcion+ "'," +
-                "cantidad =" + cantidad+ "" +
-                "costo =" + costo+"" +
-                "id_proveedor ='" + id_proveedor+"'" +
-                "id_categoria ='" + id_categoria+"'" +
-                "WHERE id_producto = " + id_producto;
+                "cantidad =" + cantidad+ "," +
+                "costo =" + costo+"," +
+                "id_proveedor =" + id_proveedor+"," +
+                "id_categoria =" + id_categoria+"" +
+                " WHERE id_producto = " + id_producto;
         System.out.println(query);
         try {
             Statement st = Conexion.conn.createStatement();
@@ -93,7 +93,7 @@ public class ProductoDAO {
         ObservableList<ProductoDAO> list = FXCollections.observableArrayList();
         ProductoDAO prodDAO = null;
 
-        String query = "SELECT * FROM proveedor ";
+        String query = "SELECT * FROM producto";
 
         try {
             Statement st = Conexion.conn.createStatement();
@@ -106,8 +106,8 @@ public class ProductoDAO {
                 prodDAO.descripcion = res.getString("descripcion");
                 prodDAO.cantidad = res.getInt("cantidad");
                 prodDAO.costo = res.getDouble("costo");
-                prodDAO.id_categoria = res.getInt("id_categoria");
                 prodDAO.id_proveedor = res.getInt("id_proveedor");
+                prodDAO.id_categoria = res.getInt("id_categoria");
                 list.add(prodDAO);
             }
         } catch (Exception e){

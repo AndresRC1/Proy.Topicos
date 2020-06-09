@@ -36,7 +36,7 @@ public class ListaProducto extends Stage {
         btn = new Button("Agregar");
         btn.setOnAction(event -> AgregarProducto());
         vBox.getChildren().addAll(TVProducto,btn);
-        scene = new Scene(vBox, 750, 280);
+        scene = new Scene(vBox, 900, 280);
     }
 
     private void AgregarProducto(){new Producto(TVProducto);}
@@ -57,6 +57,12 @@ public class ListaProducto extends Stage {
         TableColumn<ProductoDAO, Double> ColumnCosto = new TableColumn<>("Costo");
         ColumnCosto.setCellValueFactory(new PropertyValueFactory<>("costo"));
 
+        TableColumn<ProductoDAO, Integer> ColumnIdProveedor = new TableColumn<>("Id Proveedor");
+        ColumnIdProveedor.setCellValueFactory(new PropertyValueFactory<>("id_proveedor"));
+
+        TableColumn<ProductoDAO, Integer> ColumnIdCategoria = new TableColumn<>("Id Categoria");
+        ColumnIdCategoria.setCellValueFactory(new PropertyValueFactory<>("id_categoria"));
+
         TableColumn<ProductoDAO, String> tbcEditar = new TableColumn<>("Editar");
         tbcEditar.setCellFactory(new Callback<TableColumn<ProductoDAO, String>, TableCell<ProductoDAO, String>>() {
             @Override
@@ -74,7 +80,7 @@ public class ListaProducto extends Stage {
             }
         });
 
-        TVProducto.getColumns().addAll(ColumnIdProducto, ColumnNomProducto, ColumnDescripcion, ColumnCantidad, ColumnCosto, tbcEditar, tbcEliminar);
+        TVProducto.getColumns().addAll(ColumnIdProducto, ColumnNomProducto, ColumnDescripcion, ColumnCantidad, ColumnCosto, ColumnIdProveedor,ColumnIdCategoria,  tbcEditar, tbcEliminar);
         TVProducto.setItems(new ProductoDAO().SELECT());
 
     }

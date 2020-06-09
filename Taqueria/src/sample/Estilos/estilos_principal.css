@@ -1,0 +1,9 @@
+.root{
+    -fx-background-image: url("https://img5.goodfon.com/wallpaper/nbig/b/67/black-panther-t-challa-avengers-marvel-superhero-mask-colorf.jpg");
+    -fx-background-size: cover, auto;
+}
+.menu-bar{
+    -fx-background-color: #E88224;
+    -fx-border-color: #FF0011;
+    -fx-border-width: 4;
+}
