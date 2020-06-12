@@ -17,7 +17,7 @@ public class Proveedor extends Stage {
     private Label labelNombre;
     private TextField txtNombre, txtTel, txtDir;
     private Button btnGuardar;
-    private ProveedoresDAO objPDAO = null;
+    private ProveedoresDAO objPDAO=null;
 
     public Proveedor(TableView<ProveedoresDAO> TVProveedores){
         this.TVProveedores = TVProveedores;
