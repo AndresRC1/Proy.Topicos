@@ -22,7 +22,7 @@ public class Mesero extends Stage {
         CreatGUI();
         escena = new Scene(panel, 750,330);
         setScene(escena);
-        //escena.getStylesheets().add("sample/Estilos/estilos_principal.css");
+        escena.getStylesheets().add("sample/Estilos/estilo_mesero.css");
         setTitle("CRUD Mesero");
         //setMaximized(true);
         //escena.getStylesheets().add(getClass().getResource("../Estilos/estilos_principal.css").toExternalForm());

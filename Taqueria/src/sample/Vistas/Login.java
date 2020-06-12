@@ -16,11 +16,11 @@ import java.sql.Connection;
 public class Login extends Stage implements EventHandler {
 
     private Scene scene;
-    Label lable;
+    Label lable, lblima;
     VBox vBox;
     TextField txtUser;
     PasswordField txtPass;
-    Button btnAccept, btnima;
+    Button btnAccept;
 
 
     public Login(){
@@ -29,17 +29,18 @@ public class Login extends Stage implements EventHandler {
         setScene(scene);
         setTitle("Login para el Administrador");
         this.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, this);
-        scene.getStylesheets().add("sample/Estilos/Bootstrap3.css");
+        scene.getStylesheets().add("sample/Estilos/estilo_login.css");
         show();
     }
 
     private void crearGUI() {
         vBox = new VBox();
         lable = new Label();
+        lable.setStyle("-fx-base: #ffff;");
         lable.setText("Inicia Sesión Administrador");
 
-        btnima=new Button();
-        //btnima.setGraphic(new ImageView("Imagenes/jefe.png"));
+        lblima=new Label();
+        lblima.setGraphic(new ImageView("sample/Imagenes/jefe.png"));
 
         txtUser = new TextField();
         txtUser.setStyle("-fx-translate-y: 10");
@@ -56,7 +57,7 @@ public class Login extends Stage implements EventHandler {
         btnAccept = new Button("Entrar");
         btnAccept.setStyle("-fx-translate-y: 35");
 
-        vBox.getChildren().addAll(lable,btnima,txtUser,txtPass,btnAccept);
+        vBox.getChildren().addAll(lable,lblima,txtUser,txtPass,btnAccept);
         vBox.setAlignment(Pos.CENTER);
         btnAccept.setOnAction(eventLogin);
         btnAccept.setAlignment(Pos.CENTER);

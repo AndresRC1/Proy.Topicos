@@ -1,5 +1,5 @@
 .root{
-    -fx-background-color: #000;
+    -fx-background-image: url("https://i.pinimg.com/originals/d6/49/c3/d649c39d02febc228f3902342608d764.png");
     -fx-background-size: cover, auto;
 }
 .menu-bar{
@@ -7,3 +7,4 @@
     -fx-border-color: #FF0011;
     -fx-border-width: 4;
 }
+

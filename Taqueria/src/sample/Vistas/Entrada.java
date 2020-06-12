@@ -4,7 +4,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.ModelosDAO.Conexion;
@@ -16,7 +16,8 @@ import java.sql.Connection;
 public class Entrada extends Stage implements EventHandler {
 
     public Scene escena;
-    private Button btnAdmin, btnMese, btnLogo;
+    Label lblLogo;
+    private Button btnAdmin, btnMese;
     VBox vbBotones;
 
     public Entrada(){
@@ -27,21 +28,23 @@ public class Entrada extends Stage implements EventHandler {
     }
 
     private void CreatGUI() {
-        btnLogo=new Button();
-        //btnLogo.setGraphic(new ImageView("Imagenes/logo.png"));
+        lblLogo=new Label();
+        lblLogo.setGraphic(new ImageView("sample/Imagenes/logo.png"));
 
         btnAdmin = new Button("Administrador");
+        btnAdmin.setMaxSize(250,300);
         btnAdmin.setOnAction(event -> EventoItem(1));
 
         btnMese = new Button("Mesero");
+        btnMese.setMaxSize(250,300);
         btnMese.setOnAction(event -> EventoItem(2));
 
         vbBotones=new VBox();
         vbBotones.setSpacing(10);
-        vbBotones.getChildren().addAll(btnLogo,btnAdmin, btnMese);
+        vbBotones.getChildren().addAll(lblLogo,btnAdmin, btnMese);
         vbBotones.setAlignment(Pos.CENTER);
-        escena =new Scene(vbBotones, 200, 100);
-        //escena.getStylesheets().add("Estilos/estilos_principal.css");
+        escena =new Scene(vbBotones, 300, 350);
+        escena.getStylesheets().add("sample/Estilos/estilos_principal.css");
         //escena.setAlignment(Pos.CENTER)
 
     }

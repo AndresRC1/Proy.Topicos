@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -15,11 +16,11 @@ import java.sql.Connection;
 public class LoginM extends Stage implements EventHandler{
 
     private Scene scene;
-    Label lbl;
+    Label lbl, lblima;
     VBox vBox;
     TextField txtUserm;
     PasswordField txtPassm;
-    Button btnAccept, btnima;
+    Button btnAccept;
 
     public LoginM(){
         crearGUI();
@@ -27,17 +28,17 @@ public class LoginM extends Stage implements EventHandler{
         setScene(scene);
         setTitle("Login para el Mesero");
         this.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, this);
-        scene.getStylesheets().add("sample/Estilos/Bootstrap3.css");
+        scene.getStylesheets().add("sample/Estilos/estilo_loginM.css");
         show();
     }
-
     private void crearGUI() {
         vBox = new VBox();
         lbl = new Label();
         lbl.setText("Inicia Sesión Mesero");
+        lbl.setStyle("-fx-base: #ffff;");
 
-        btnima=new Button();
-        //btnima.setGraphic(new ImageView("Imagenes/mesero.png"));
+        lblima=new Label();
+        lblima.setGraphic(new ImageView("sample/Imagenes/mesero.png"));
 
         txtUserm = new TextField();
         txtUserm.setStyle("-fx-translate-y: 10");
@@ -54,7 +55,7 @@ public class LoginM extends Stage implements EventHandler{
         btnAccept = new Button("Entrar");
         btnAccept.setStyle("-fx-translate-y: 35");
 
-        vBox.getChildren().addAll(lbl,btnima,txtUserm,txtPassm,btnAccept);
+        vBox.getChildren().addAll(lbl,lblima,txtUserm,txtPassm,btnAccept);
         vBox.setAlignment(Pos.CENTER);
         btnAccept.setOnAction(eventLogin);
         btnAccept.setAlignment(Pos.CENTER);
