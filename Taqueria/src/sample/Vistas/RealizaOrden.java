@@ -51,16 +51,16 @@ public class RealizaOrden extends Stage {
         lblTacos=new Label();
         lblTacos.setText("------------TACOS-----------");
         lblT1=new Label();
-        //lblT1.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        lblT1.setGraphic(new ImageView("sample/Imagenes/tacoChori.jpg"));
         lblT1.setMinHeight(50.0);
         lblT2=new Label();
-        //lblT2.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        lblT2.setGraphic(new ImageView("sample/Imagenes/tacoPasto.png"));
         lblT2.setMinHeight(50.0);
         lblT3=new Label();
-        //lblT3.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        lblT3.setGraphic(new ImageView("sample/Imagenes/tacosAsada.png"));
         lblT3.setMinHeight(50.0);
         lblT4=new Label();
-        //lblT4.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        lblT4.setGraphic(new ImageView("sample/Imagenes/tacosTripa.jpg"));
         lblT4.setMinHeight(50.0);
 
         btnt1= new Button("+");
@@ -99,16 +99,16 @@ public class RealizaOrden extends Stage {
         lblCombos=new Label();
         lblCombos.setText("-----------COMBOS-----------");
         lblC1=new Label();
-        //lblT1.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        lblC1.setGraphic(new ImageView("sample/Imagenes/combo1.jpg"));
         lblC1.setMinHeight(50.0);
         lblC2=new Label();
-        //lblT2.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        lblC2.setGraphic(new ImageView("sample/Imagenes/combo2.jpg"));
         lblC2.setMinHeight(50.0);
         lblC3=new Label();
-        //lblT3.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        lblC3.setGraphic(new ImageView("sample/Imagenes/combo3.png"));
         lblC3.setMinHeight(50.0);
         lblC4=new Label();
-        //lblT4.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        lblC4.setGraphic(new ImageView("sample/Imagenes/combo4.jpeg"));
         lblC4.setMinHeight(50.0);
 
         btnc1= new Button("+");
@@ -147,16 +147,16 @@ public class RealizaOrden extends Stage {
         lblBebidas=new Label();
         lblBebidas.setText("------------BEBIDAS-----------");
         lblB1=new Label();
-        //lblT1.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        //lblT1.setGraphic(new ImageView("sample/Imagenes/bebidaHor.jpg"));
         lblB1.setMinHeight(50.0);
         lblB2=new Label();
-        //lblT2.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        //lblT2.setGraphic(new ImageView("sample/Imagenes/cerveza.jpg"));
         lblB2.setMinHeight(50.0);
         lblB3=new Label();
-        //lblT3.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        //lblT3.setGraphic(new ImageView("sample/Imagenes/jugo.png"));
         lblB3.setMinHeight(50.0);
         lblB4=new Label();
-        //lblT4.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        //lblT4.setGraphic(new ImageView("sample/Imagenes/refres.jpg"));
         lblB4.setMinHeight(50.0);
 
         btnb1= new Button("+");
@@ -195,16 +195,16 @@ public class RealizaOrden extends Stage {
         lblOtros=new Label();
         lblOtros.setText("------------OTROS-----------");
         lblO1=new Label();
-        //lblT1.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        //lblT1.setGraphic(new ImageView("sample/Imagenes/postres1.jpg"));
         lblO1.setMinHeight(50.0);
         lblO2=new Label();
-        //lblT2.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        //lblT2.setGraphic(new ImageView("sample/Imagenes/postre2.jpg"));
         lblO2.setMinHeight(50.0);
         lblO3=new Label();
-        //lblT3.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        //lblT3.setGraphic(new ImageView("sample/Imagenes/postre3.jpg"));
         lblO3.setMinHeight(50.0);
         lblO4=new Label();
-        //lblT4.setGraphic(new ImageView("sample/Imagenes/logo.png"));
+        //lblT4.setGraphic(new ImageView("sample/Imagenes/postre4.jpg"));
         lblO4.setMinHeight(50.0);
 
         btno1= new Button("+");
@@ -271,7 +271,7 @@ public class RealizaOrden extends Stage {
 
 
     }
-    private void CrearTicket(){ new Ticket(); }
+    private void CrearTicket(){ new Ticket_1(); }
 
 
     public void getScena(Scene scene){

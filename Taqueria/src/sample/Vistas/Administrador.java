@@ -13,8 +13,8 @@ public class Administrador extends Stage {
 
     public Scene escena;
     private MenuBar menuBar;
-    private Menu menuProveedores, menuCategorias,menuProducto,menuEmpleado, menuOrden, menuCompra, menuCompraD;
-    private MenuItem ItemProveedor, ItemProducto, ItemCategoria, ItemEmpleado, ItemOrden, ItemCompra, ItemCompraD;
+    private Menu menuProveedores, menuCategorias,menuProducto,menuEmpleado, menuOrden, menuCompra, menuCompraD, menuHistorial;
+    private MenuItem ItemProveedor, ItemProducto, ItemCategoria, ItemEmpleado, ItemOrden, ItemCompra, ItemCompraD, ItemHistorial;
     private BorderPane panel;
 
     public Administrador(){
@@ -54,6 +54,9 @@ public class Administrador extends Stage {
         menuCompraD = new Menu("Lista de Compra detalles");
         menuCompraD.setId("menu7");
 
+        menuHistorial = new Menu("Historial");
+        menuHistorial.setId("menu8");
+
         ItemProveedor = new MenuItem("Proveedores");
         ItemProveedor.setOnAction(event -> EventoItem(1));
 
@@ -75,7 +78,10 @@ public class Administrador extends Stage {
         ItemCompraD = new MenuItem("Compra detalle");
         ItemCompraD.setOnAction(event -> EventoItem(7));
 
-        menuBar.getMenus().addAll(menuProveedores, menuCategorias, menuProducto, menuEmpleado, menuOrden, menuCompra, menuCompraD);
+        ItemHistorial = new MenuItem("Historial");
+        ItemHistorial.setOnAction(event -> EventoItem(8));
+
+        menuBar.getMenus().addAll(menuProveedores, menuCategorias, menuProducto, menuEmpleado, menuOrden, menuCompra, menuCompraD, menuHistorial);
         menuProveedores.getItems().addAll(ItemProveedor );
         menuCategorias.getItems().addAll(ItemCategoria);
         menuProducto.getItems().addAll(ItemProducto);
@@ -83,6 +89,7 @@ public class Administrador extends Stage {
         menuOrden.getItems().addAll(ItemOrden);
         menuCompra.getItems().addAll(ItemCompra);
         menuCompraD.getItems().addAll(ItemCompraD);
+        menuHistorial.getItems().addAll(ItemHistorial);
         panel.setTop(menuBar);
 
     }
@@ -96,6 +103,8 @@ public class Administrador extends Stage {
             case 5: new ListaOrden(); break;
             case 6: new ListaCompra(); break;
             case 7: new ListaCompra_detalle(); break;
+            case 8: new Historial(); break;
+
         }
     }
 

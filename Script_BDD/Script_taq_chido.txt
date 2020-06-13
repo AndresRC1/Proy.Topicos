@@ -35,6 +35,12 @@ Create table orden(
 id_orden int not null primary key auto_increment,
 nota varchar (150));
 
+Create table compra(
+id_compra int primary key auto_increment,
+fecha date,
+id_empleado int,
+constraint compraFk1 foreign key (id_empleado) references empleado(id_empleado));
+
 create table compra_detalle(
 id_compra int not null,
 id_orden int not null,
@@ -44,11 +50,4 @@ precio_unitario int not null,
 constraint compra_detallePk primary key (id_compra, id_orden),
 constraint compra_detalleFk1 foreign key (id_compra) references compra(id_compra),
 constraint compra_detalleFk2 foreign key (id_orden) references orden(id_orden),
-constraint compra_detalleFk3 foreign key (id_producto) references producto(id_producto)
-);
-
-Create table compra(
-id_compra int primary key auto_increment,
-fecha date,
-id_empleado int,
-constraint compraFk1 foreign key (id_empleado) references empleado(id_empleado));
+constraint compra_detalleFk3 foreign key (id_producto) references producto(id_producto));

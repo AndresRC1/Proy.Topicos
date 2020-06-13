@@ -47,7 +47,7 @@ public class Ticket_1 implements Initializable {
 
     public void create(){
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/taqueria", "root", "RACA971201");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/taqueria", "root", "1234");
             Statement estado = con.createStatement();
             ResultSet resultado = estado.executeQuery(" SELECT p.id_producto, p.nombre_producto, p.descripcion, p.cantidad, p.costo, p2.nombre_proveedor, c.categoria FROM proveedor p2 INNER JOIN producto p ON p2.id_proveedor = p.id_proveedor LEFT JOIN categoria_producto c ON p.id_categoria = c.id_categoria ");
 
