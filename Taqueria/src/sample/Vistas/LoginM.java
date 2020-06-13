@@ -13,55 +13,52 @@ import sample.ModelosDAO.Conexion;
 
 import java.sql.Connection;
 
-public class Login extends Stage implements EventHandler {
+public class LoginM extends Stage implements EventHandler{
 
     private Scene scene;
-    Label lable, lblima;
+    Label lbl, lblima;
     VBox vBox;
-    TextField txtUser;
-    PasswordField txtPass;
+    TextField txtUserm;
+    PasswordField txtPassm;
     Button btnAccept;
 
-
-    public Login(){
+    public LoginM(){
         crearGUI();
         scene = new Scene(vBox, 350, 250);
         setScene(scene);
-        setTitle("Login para el Administrador");
+        setTitle("Login para el Mesero");
         this.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, this);
-        scene.getStylesheets().add("sample/Estilos/estilo_login.css");
+        scene.getStylesheets().add("sample/Estilos/estilo_loginM.css");
         show();
     }
-
     private void crearGUI() {
         vBox = new VBox();
-        lable = new Label();
-        lable.setStyle("-fx-base: #ffff;");
-        lable.setText("Inicia Sesión Administrador");
+        lbl = new Label();
+        lbl.setText("Inicia Sesión Mesero");
+        lbl.setStyle("-fx-base: #ffff;");
 
         lblima=new Label();
-        lblima.setGraphic(new ImageView("sample/Imagenes/jefe.png"));
+        lblima.setGraphic(new ImageView("sample/Imagenes/mesero.png"));
 
-        txtUser = new TextField();
-        txtUser.setStyle("-fx-translate-y: 10");
-        txtUser.setStyle("-fx-background-radius: 5");
-        txtUser.setLayoutX(50);
-        txtUser.setPromptText("Usuario");
+        txtUserm = new TextField();
+        txtUserm.setStyle("-fx-translate-y: 10");
+        txtUserm.setStyle("-fx-background-radius: 5");
+        txtUserm.setLayoutX(50);
+        txtUserm.setPromptText("Empleado");
 
-        txtPass = new PasswordField();
-        txtPass.setStyle("-fx-translate-y: 10");
-        txtPass.setStyle("-fx-background-radius: 5");
-        txtPass.setLayoutX(50);
-        txtPass.setPromptText("Contraseña");
+        txtPassm = new PasswordField();
+        txtPassm.setStyle("-fx-translate-y: 10");
+        txtPassm.setStyle("-fx-background-radius: 5");
+        txtPassm.setLayoutX(50);
+        txtPassm.setPromptText("Contraseña");
 
         btnAccept = new Button("Entrar");
         btnAccept.setStyle("-fx-translate-y: 35");
 
-        vBox.getChildren().addAll(lable,lblima,txtUser,txtPass,btnAccept);
+        vBox.getChildren().addAll(lbl,lblima,txtUserm,txtPassm,btnAccept);
         vBox.setAlignment(Pos.CENTER);
         btnAccept.setOnAction(eventLogin);
         btnAccept.setAlignment(Pos.CENTER);
-
     }
 
     EventHandler eventLogin = new EventHandler() {
@@ -72,12 +69,12 @@ public class Login extends Stage implements EventHandler {
         }
     };
 
-    String user = "Admin";
-    String pass = "12345";
+    String userme = "mesero";
+    String passme= "123";
 
     private void acceder() {
-        if(txtUser.getText().equals(user) && txtPass.getText().equals(pass)){
-            Administrador admin = new Administrador();
+        if(txtUserm.getText().equals(userme) && txtPassm.getText().equals(passme)){
+            Mesero admin = new Mesero();
             admin.getScena(scene);
             scene.getWindow().hide();
         } else {
@@ -86,6 +83,7 @@ public class Login extends Stage implements EventHandler {
             alert.setContentText("Verifica tus datos");
             alert.show();
         }
+
 
     }
     @Override

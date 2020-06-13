@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.ModelosDAO.Conexion;
+import sample.Vistas.Entrada;
 import sample.Vistas.Login;
 
 public class Main extends Application  {
@@ -15,12 +16,12 @@ public class Main extends Application  {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Restaurante Taqueria");
         primaryStage.setScene(new Scene(root, 300, 275));
 
         //primaryStage.show();
-        Login login = new Login();
-        login.show();
+        Entrada entrada = new Entrada();
+        entrada.show();
     }
 
 

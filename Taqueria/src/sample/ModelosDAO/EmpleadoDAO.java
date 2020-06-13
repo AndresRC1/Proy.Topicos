@@ -41,7 +41,7 @@ public class EmpleadoDAO {
 
     public void INSERT(){
         String query = "INSERT INTO empleado (nombre_emplead, telefono, direccion, usuario, password)" +
-                "VALUES ('"+nombre_empleado+"', '"+telefono+"', "+direccion+",  "+usuario+", "+password+")";
+                "VALUES ('"+nombre_empleado+"', '"+telefono+"', '"+direccion+"',  '"+usuario+"', '"+password+"')";
         try {
             Statement st = Conexion.conn.createStatement();
             st.executeUpdate(query);

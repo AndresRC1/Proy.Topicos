@@ -20,7 +20,7 @@ public class ListaProducto extends Stage {
     private Scene scene;
     private VBox vBox;
     private TableView<ProductoDAO> TVProducto;
-    private Button btn;
+    private Button btn, btnImprimir;
 
     ListaProducto(){
         CrearGUI();
@@ -35,9 +35,19 @@ public class ListaProducto extends Stage {
         CrearTabla();
         btn = new Button("Agregar");
         btn.setOnAction(event -> AgregarProducto());
-        vBox.getChildren().addAll(TVProducto,btn);
         scene = new Scene(vBox, 900, 280);
+        btnImprimir = new Button("Imprimir");
+        btnImprimir.setOnAction(event -> Imprimir(1));
+        vBox.getChildren().addAll(TVProducto,btn, btnImprimir);
     }
+
+    private void Imprimir(int opc) {
+        switch (opc){
+            case 1: Ticket_1 obj = new Ticket_1();
+                obj.ini();break;
+        }
+    }
+
 
     private void AgregarProducto(){new Producto(TVProducto);}
 
