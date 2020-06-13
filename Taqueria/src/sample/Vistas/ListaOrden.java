@@ -47,7 +47,11 @@ public class ListaOrden extends Stage {
 
     private void Agregar(){ new Orden(TVOrden); }
 
+<<<<<<< HEAD
     private void CrearOrden(){ new RealizaOrden(); }
+=======
+    private void CrearOrden(){ new RealizaOrden(TVCompra_detalle); }
+>>>>>>> 6bdb21716c002f19761f67ec8f53db150f186c64
 
     private void CrearTabla(){
         TableColumn<OrdenDAO, Integer> ColumnIdOrden = new TableColumn<>("Id Orden");

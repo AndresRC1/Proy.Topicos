@@ -18,7 +18,10 @@
     </orderEntry>
     <orderEntry type="library" name="src" level="project" />
     <orderEntry type="library" name="src1" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" name="itextpdf-5.5.9" level="project" />
+=======
+>>>>>>> 6bdb21716c002f19761f67ec8f53db150f186c64
     <orderEntry type="library" name="mysql-connector-java-5.1.47-bin" level="project" />
   </component>
 </module>

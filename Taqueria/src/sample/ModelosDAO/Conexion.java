@@ -12,7 +12,7 @@ public class Conexion {
     private static String host = "localhost";
     private static String db = "taqueria";
     private static String user = "root";
-    private static String pass = "RACA971201";
+    private static String pass = "1234";
     public static Connection conn = null;
 
     public Connection Connect(){
