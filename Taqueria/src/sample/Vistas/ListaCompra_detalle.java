@@ -1,5 +1,6 @@
 package sample.Vistas;
 
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -23,6 +24,8 @@ public class ListaCompra_detalle extends Stage {
     private VBox vBox;
     private TableView<Compra_detalleDAO> TVCompra_detalle;
     private Button btn, btnImprimir;
+    private ObservableList<Compra_detalleDAO> compra_detalleDAOS;
+    private int selectTable=1;
 
     ListaCompra_detalle(){
         CrearGUI();
@@ -38,14 +41,18 @@ public class ListaCompra_detalle extends Stage {
         btn = new Button("Agregar");
         btn.setOnAction(event -> AgregarCompraD());
         btnImprimir=new Button("Imprimir");
-        btnImprimir.setOnAction(event -> Imprimir(1));
+        btnImprimir.setOnAction(event -> Imprimir(selectTable));
+        TVCompra_detalle.setOnMouseClicked(event -> selectTable=2);
         vBox.getChildren().addAll(TVCompra_detalle,btn,btnImprimir);
         scene = new Scene(vBox, 900, 280);
     }
     private void Imprimir(int opc) {
+        Ticket obj = new Ticket();
         switch (opc){
-            case 1: Ticket obj = new Ticket();
+            case 1:
                 obj.ini();break;
+            case 2:
+                obj.imprimirSeleccion(compra_detalleDAOS.get(TVCompra_detalle.getSelectionModel().getSelectedIndex()));
         }
     }
 
@@ -84,7 +91,8 @@ public class ListaCompra_detalle extends Stage {
         });
 
         TVCompra_detalle.getColumns().addAll(ColumnIdCompra,ColumnIdOrden,ColumnIdProducto,ColumnCantidad,ColumnPrecioU,tbcEditar,tbcEliminar);
-        TVCompra_detalle.setItems(new Compra_detalleDAO().SELECT());
+        compra_detalleDAOS = new Compra_detalleDAO().SELECT();
+        TVCompra_detalle.setItems(compra_detalleDAOS);
 
     }
 

@@ -45,12 +45,14 @@ public class LoginM extends Stage implements EventHandler{
         txtUserm.setStyle("-fx-background-radius: 5");
         txtUserm.setLayoutX(50);
         txtUserm.setPromptText("Empleado");
+        txtUserm.setText("mesero");
 
         txtPassm = new PasswordField();
         txtPassm.setStyle("-fx-translate-y: 10");
         txtPassm.setStyle("-fx-background-radius: 5");
         txtPassm.setLayoutX(50);
         txtPassm.setPromptText("Contraseña");
+        txtPassm.setText("123");
 
         btnAccept = new Button("Entrar");
         btnAccept.setStyle("-fx-translate-y: 35");
