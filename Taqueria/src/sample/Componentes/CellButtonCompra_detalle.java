@@ -33,7 +33,14 @@ private void Eliminar(){
     CellButtonCompra_detalle.this.getTableView().refresh();
         }
 
-@Override
+    private void Imprimir(){
+        cdDAO = CellButtonCompra_detalle.this.getTableView().getItems().get(CellButtonCompra_detalle.this.getIndex());
+        new compra_detalle(CellButtonCompra_detalle.this.getTableView()).setCompra_detalleDAO(cdDAO);
+    }
+
+
+
+    @Override
 protected void updateItem(String item, boolean empty){
         super.updateItem(item, empty);
         if (!empty)

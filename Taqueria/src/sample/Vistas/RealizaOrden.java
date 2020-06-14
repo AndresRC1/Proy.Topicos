@@ -147,16 +147,16 @@ public class RealizaOrden extends Stage {
         lblBebidas=new Label();
         lblBebidas.setText("------------BEBIDAS-----------");
         lblB1=new Label();
-        //lblT1.setGraphic(new ImageView("sample/Imagenes/bebidaHor.jpg"));
+        lblB1.setGraphic(new ImageView("sample/Imagenes/bebidaHor.jpg"));
         lblB1.setMinHeight(50.0);
         lblB2=new Label();
-        //lblT2.setGraphic(new ImageView("sample/Imagenes/cerveza.jpg"));
+        lblB2.setGraphic(new ImageView("sample/Imagenes/cerveza.jpg"));
         lblB2.setMinHeight(50.0);
         lblB3=new Label();
-        //lblT3.setGraphic(new ImageView("sample/Imagenes/jugo.png"));
+        lblB3.setGraphic(new ImageView("sample/Imagenes/jugo.png"));
         lblB3.setMinHeight(50.0);
         lblB4=new Label();
-        //lblT4.setGraphic(new ImageView("sample/Imagenes/refres.jpg"));
+        lblB4.setGraphic(new ImageView("sample/Imagenes/refres.jpg"));
         lblB4.setMinHeight(50.0);
 
         btnb1= new Button("+");
@@ -195,16 +195,16 @@ public class RealizaOrden extends Stage {
         lblOtros=new Label();
         lblOtros.setText("------------OTROS-----------");
         lblO1=new Label();
-        //lblT1.setGraphic(new ImageView("sample/Imagenes/postres1.jpg"));
+        lblO1.setGraphic(new ImageView("sample/Imagenes/postres1.jpg"));
         lblO1.setMinHeight(50.0);
         lblO2=new Label();
-        //lblT2.setGraphic(new ImageView("sample/Imagenes/postre2.jpg"));
+        lblO2.setGraphic(new ImageView("sample/Imagenes/postre2.jpg"));
         lblO2.setMinHeight(50.0);
         lblO3=new Label();
-        //lblT3.setGraphic(new ImageView("sample/Imagenes/postre3.jpg"));
+        lblO3.setGraphic(new ImageView("sample/Imagenes/postre3.jpg"));
         lblO3.setMinHeight(50.0);
         lblO4=new Label();
-        //lblT4.setGraphic(new ImageView("sample/Imagenes/postre4.jpg"));
+        lblO4.setGraphic(new ImageView("sample/Imagenes/postre4.jpg"));
         lblO4.setMinHeight(50.0);
 
         btno1= new Button("+");
@@ -269,10 +269,8 @@ public class RealizaOrden extends Stage {
         vBox=new VBox();
         vBox.getChildren().addAll(hboxTa,hboximaT,hboxbtnT,hboxTCom,hboximaC,hboxbtnC,hboxTBe,hboximaB,hboxbtnB,hboxTOt,hboximaO,hboxbtnO,hboxbtnPDF);
 
-
     }
-    private void CrearTicket(){ new Ticket_1(); }
-
+    private void CrearTicket(){ new Ticket(); }
 
     public void getScena(Scene scene){
     }

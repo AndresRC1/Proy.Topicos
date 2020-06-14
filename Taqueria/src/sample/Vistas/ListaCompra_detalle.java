@@ -22,7 +22,7 @@ public class ListaCompra_detalle extends Stage {
     private Scene scene;
     private VBox vBox;
     private TableView<Compra_detalleDAO> TVCompra_detalle;
-    private Button btn;
+    private Button btn, btnImprimir;
 
     ListaCompra_detalle(){
         CrearGUI();
@@ -37,8 +37,16 @@ public class ListaCompra_detalle extends Stage {
         CrearTabla();
         btn = new Button("Agregar");
         btn.setOnAction(event -> AgregarCompraD());
-        vBox.getChildren().addAll(TVCompra_detalle,btn);
+        btnImprimir=new Button("Imprimir");
+        btnImprimir.setOnAction(event -> Imprimir(1));
+        vBox.getChildren().addAll(TVCompra_detalle,btn,btnImprimir);
         scene = new Scene(vBox, 900, 280);
+    }
+    private void Imprimir(int opc) {
+        switch (opc){
+            case 1: Ticket obj = new Ticket();
+                obj.ini();break;
+        }
     }
 
     private void AgregarCompraD(){new compra_detalle(TVCompra_detalle);}
@@ -75,7 +83,7 @@ public class ListaCompra_detalle extends Stage {
             }
         });
 
-        TVCompra_detalle.getColumns().addAll(ColumnIdCompra, ColumnIdOrden, ColumnIdProducto, ColumnCantidad,ColumnPrecioU,  tbcEditar, tbcEliminar);
+        TVCompra_detalle.getColumns().addAll(ColumnIdCompra,ColumnIdOrden,ColumnIdProducto,ColumnCantidad,ColumnPrecioU,tbcEditar,tbcEliminar);
         TVCompra_detalle.setItems(new Compra_detalleDAO().SELECT());
 
     }

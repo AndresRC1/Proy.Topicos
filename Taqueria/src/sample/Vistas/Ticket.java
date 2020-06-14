@@ -1,55 +1,111 @@
 package sample.Vistas;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.awt.*;
+import java.awt.Font;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.sql.*;
+import java.util.Optional;
+import java.util.ResourceBundle;
+
+public class Ticket implements Initializable {
+
+    public static final String DEST = "results/chapter01/compra_detalle.pdf";
 
 
-import javafx.scene.control.TableView;
-
-import java.io.IOException;
-import java.util.List;
-
-public class Ticket {
-    public static final String DATA = "src/resources/united_states.csv";
-    public void createPdf(String dest, List<compra_detalle> comdetaList) throws IOException {
-
-        //Initialize PDF writer
-        PdfWriter writer = new PdfWriter(dest);
-
-        //Initialize PDF document
-        PdfDocument pdf = new PdfDocument(writer);
-
-        // Initialize document
-        Document document = new Document(pdf, PageSize.A4.rotate());
-        document.setMargins(20, 20, 20, 20);
-
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
-        PdfFont bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        Table table = new Table(new float[]{5,5});
-        process(table, null, bold, true);
-        for (compra_detalle e: comdetaList) {
-            process(table, e, font, false);
-        }
-        document.add(table);
-
-        //Close document
-        document.close();
-
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
-    public void process(Table table, compra_detalle comdeta, PdfFont font, boolean isHeader){
-        if (isHeader) {
-            table.addHeaderCell(new Cell().add(new Paragraph("id_compra").setFont(font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("id_orden").setFont(font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("id_producto").setFont(font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("cantidad").setFont(font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("precio_unitario").setFont(font)));
+
+    public void ini() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación de Impresión de Compra detalle");
+        alert.setHeaderText("Estás a punto de imprimir la compra detalle");
+        alert.setContentText("¿Deseas continuar?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            create();
+        } else {
         }
-        else {
-            table.addCell(new Cell().add(new Paragraph(" "+comdeta.getId_compra()).setFont(font)));
-            table.addCell(new Cell().add(new Paragraph(" "+comdeta.getId_orden()).setFont(font)));
-            table.addCell(new Cell().add(new Paragraph(" "+comdeta.geId_producto()).setFont(font)));
-            table.addCell(new Cell().add(new Paragraph(" "+comdeta.getCantidad()).setFont(font)));
-            table.addCell(new Cell().add(new Paragraph(" "+comdeta.getPrecio_unitario()).setFont(font)));
+    }
+
+    public void create(){
+        try{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/taqueria", "root", "RACA971201");
+            Statement estado = con.createStatement();
+            ResultSet resultado = estado.executeQuery("   SELECT cd.id_compra, cd.id_orden, c.fecha, p.nombre_producto, cd.cantidad, cd.precio_unitario,  \n" +
+                    "                    (cd.cantidad*cd.precio_unitario) as sumatoria from compra_detalle cd \n" +
+                    "                       INNER JOIN producto p ON cd.id_producto=p.id_producto \n" +
+                    "                       INNER JOIN compra c ON cd.id_compra=c.id_compra order by 1,2,3,4,5,6");
+
+            OutputStream file = new FileOutputStream(new File("results/chapter01/compra_detalle.pdf"));
+            Document document = new Document();
+
+
+            PdfWriter.getInstance(document, file);
+
+            document.open();
+            PdfPTable tabla = new PdfPTable(7);
+            Paragraph p = new Paragraph("compra_detalle.\n\n", FontFactory.getFont("Arial",16, Font.ITALIC, BaseColor.RED));
+
+            p.setAlignment(Element.ALIGN_CENTER);
+            document.add(p);
+
+            document.add(new Paragraph(""));
+
+            float[] mediaCeldas ={3.30f,3.50f,3.50f,3.70f,3.70f,3.70f, 3.70f};
+
+            tabla.setWidths(mediaCeldas);
+            tabla.addCell(new Paragraph("Id_compra", FontFactory.getFont("Arial",12)));
+            tabla.addCell(new Paragraph("id_orden", FontFactory.getFont("Arial",12)));
+            tabla.addCell(new Paragraph("fecha", FontFactory.getFont("Arial",12)));
+            tabla.addCell(new Paragraph("id_producto", FontFactory.getFont("Arial",12)));
+            tabla.addCell(new Paragraph("cantidad", FontFactory.getFont("Arial",12)));
+            tabla.addCell(new Paragraph("precio_unitario", FontFactory.getFont("Arial",12)));
+            tabla.addCell(new Paragraph("sumatoria", FontFactory.getFont("Arial", 12)));
+
+            while (resultado.next()){
+                tabla.addCell(new Paragraph(String.valueOf(resultado.getInt("id_compra")), FontFactory.getFont("Arial",10)));
+                tabla.addCell(new Paragraph(String.valueOf(resultado.getInt("id_orden")), FontFactory.getFont("Arial",10)));
+                tabla.addCell(new Paragraph(resultado.getString("fecha"), FontFactory.getFont("Arial",10)));
+                tabla.addCell(new Paragraph(resultado.getString("nombre_producto"), FontFactory.getFont("Arial",10)));
+                tabla.addCell(new Paragraph(String.valueOf(resultado.getInt("cantidad")), FontFactory.getFont("Arial",10)));
+                tabla.addCell(new Paragraph(String.valueOf(resultado.getInt("precio_unitario")), FontFactory.getFont("Arial",10)));
+                tabla.addCell(new Paragraph(String.valueOf(resultado.getInt("sumatoria")), FontFactory.getFont("Arial", 12)));
+            }
+
+            document.add(tabla);
+            document.close();
+            file.close();
+        }
+
+        catch (SQLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            File file = new File("results/chapter01/compra_detalle.pdf");
+            Desktop.getDesktop().open(file);
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
         }
     }
 }
